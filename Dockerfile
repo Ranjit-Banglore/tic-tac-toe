@@ -4,4 +4,4 @@ RUN mkdir apps
 
 ADD build/libs/tic-tac-toe.jar  /apps/tic-tac-toe.jar
 
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","/apps/tic-tac-toe.jar"]
