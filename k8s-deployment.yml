@@ -9,6 +9,7 @@ spec:
       app: tic-tac-toe
   template:
     metadata:
+      name: tic-tac-toe
       labels:
         app: tic-tac-toe
     spec:

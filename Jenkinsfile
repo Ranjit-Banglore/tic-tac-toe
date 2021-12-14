@@ -25,6 +25,7 @@ node {
     }
 
     stage('kubernetes deployment'){
+        sh 'kubectl delete --all pods --namespace=tic-tac-toe'
         sh 'kubectl apply -f k8s-deployment.yml'
     }
 
