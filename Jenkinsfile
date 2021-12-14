@@ -1,7 +1,7 @@
 node {
 
     stage('Git clone'){
-        git credentialsId: 'GIT_HUB_CREDENTIAL' , url : 'https://github.com/Ranjit-Banglore/tic-tac-toe.git'
+        git  url : 'https://github.com/Ranjit-Banglore/tic-tac-toe.git'
     }
 
     stage('Gradle Build'){
@@ -10,9 +10,9 @@ node {
 
     stage('Docker Build'){
         sh 'docker version'
-        sh 'docker build -t tic-tac-toe .'
-        sh 'docker image list'
-        sh 'docker tag tic-tac-toe ranjitkumarkiit/tic-tac-toe:latest'
+        sh 'docker build -t tic-tac-toe.jar .'
+        sh 'docker image ls'
+        sh 'docker tag tic-tac-toe.jar ranjitkumarkiit/tic-tac-toe.jar'
     }
 
     withCredentials([string(credentialsId:  'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]){
@@ -20,7 +20,7 @@ node {
     }
 
     stage('Push image to Docker hub'){
-        sh 'docker push ranjitkumarkiit/tic-tac-toe:tic-tac-toe'
+        sh 'docker push ranjitkumarkiit/tic-tac-toe.jar'
     }
 
     stage('kubernetes deployment'){
