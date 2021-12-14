@@ -10,9 +10,10 @@ node {
 
     stage('Docker Build'){
         sh 'docker version'
-        sh 'docker build -t tic-tac-toe.jar .'
+        sh 'docker build --build-arg GIT_COMMIT=$(git rev-parse HEAD) -t tic-tac-toe.jar:$(git rev-parse HEAD) .'
+//         sh 'docker build -t tic-tac-toe.jar .'
         sh 'docker image ls'
-        sh 'docker tag tic-tac-toe.jar ranjitkumarkiit/tic-tac-toe.jar'
+        sh 'docker tag tic-tac-toe.jar:$(git rev-parse HEAD) ranjitkumarkiit/tic-tac-toe.jar'
     }
 
     withCredentials([string(credentialsId:  'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]){
@@ -28,3 +29,4 @@ node {
     }
 
 }
+
