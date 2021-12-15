@@ -30,7 +30,6 @@ node {
         sh 'echo $(git rev-parse HEAD)'
         sh 'sed -ie "s/COMMIT_HASH/$(git rev-parse HEAD)/" k8s-deployment.yml'
         sh 'cat k8s-deployment.yml'
-        sh 'kubectl delete --all pods'
         sh 'kubectl apply -f k8s-deployment.yml'
     }
 
