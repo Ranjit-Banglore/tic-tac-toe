@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: springboot
-          image: ranjitkumarkiit/tic-tac-toe.jar:latest
+          image: ranjitkumarkiit/tic-tac-toe:COMMIT_HASH
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
