@@ -11,7 +11,7 @@ node {
     stage('Docker Build'){
         sh 'docker version'
         sh 'echo $(git rev-parse HEAD)'
-        sh 'docker build -t tic-tac-toe:$(git rev-parse HEAD) .'
+        sh 'docker build --no-cache -t tic-tac-toe:$(git rev-parse HEAD) .'
         sh 'docker image ls'
         sh 'docker tag tic-tac-toe:$(git rev-parse HEAD) ranjitkumarkiit/tic-tac-toe:$(git rev-parse HEAD)'
     }

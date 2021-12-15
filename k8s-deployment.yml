@@ -22,8 +22,6 @@ spec:
           env:
             - name: PORT
               value: "8080"
-            - name: FOR_GODS_SAKE_PLEASE_REDEPLOY
-              value: 'DATE_STRING'
 ---
 apiVersion: v1
 kind: Service
